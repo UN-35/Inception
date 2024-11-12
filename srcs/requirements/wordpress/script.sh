@@ -1,7 +1,7 @@
 #!/bin/bash
 #---------------------------------------------------wp installation---------------------------------------------------#
 # wp-cli installation
-if [ -f /var/www/html/wordpress/wp-config.php ]; then
+if [ -f /var/www/html/wordpress/testee.txt ]; then
     echo "wp already Done"
 else
     cd wordpress
@@ -18,9 +18,10 @@ else
     sed -i "s/username_here/$MARIA_USER/" wp-config.php  
     sed -i "s/password_here/$MARIA_USR_PASSWD/" wp-config.php  
     sed -i "s/localhost/mariadb/" wp-config.php
+    touch testee.txt
 
-    # wp core install --allow-root --url=${DOMAIN_NAME} --title=${WP_TITLE} --admin_user=${WP_ADMIN} --admin_password=${WP_ADMIN_PS} --admin_email=${WP_ADMIN_EMAIL}
-	# wp user create --allow-root ${WP_USER} ${WP_USER_EMAIL} --user_pass=${WP_USER_PS};
+    wp core install --allow-root --url=${DOMAIN_NAME} --title=${WP_TITLE} --admin_user=${WP_ADMIN} --admin_password=${WP_ADMIN_PS} --admin_email=${WP_ADMIN_EMAIL}
+	wp user create --allow-root ${WP_USER} ${WP_USER_EMAIL} --user_pass=${WP_USER_PS};
 fi
 exec "$@"
 # download wordpress core files
