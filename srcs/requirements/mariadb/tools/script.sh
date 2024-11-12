@@ -6,13 +6,8 @@ service mariadb start
 
 mysql_secure_installation << EOF
 
-Y
 $MYSQL_ROOT_PW
 $MYSQL_ROOT_PW
-Y
-Y
-Y
-Y
 EOF
 
 echo "CREATE DATABASE IF NOT EXISTS $MARIA_DB_NAME ;" | mysql -uroot

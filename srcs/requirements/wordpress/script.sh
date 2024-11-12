@@ -1,6 +1,8 @@
 #!/bin/bash
-#---------------------------------------------------wp installation---------------------------------------------------#
-# wp-cli installation
+
+
+
+
 if [ -f /var/www/html/wordpress/testee.txt ]; then
     echo "wp already Done"
 else
@@ -24,38 +26,4 @@ else
 	wp user create --allow-root ${WP_USER} ${WP_USER_EMAIL} --user_pass=${WP_USER_PS};
 fi
 exec "$@"
-# download wordpress core files
-# # create wp-config.php file with database details
-# wp core config --dbhost=mariadb:3306 --dbname="$MARIA_DB_NAME" --dbuser="$MARIA_USER" --dbpass="$MARIA_RT_PASSWD" --allow-root
-# # install wordpress with the given title, admin username, password and email
-# wp core install --url="$DOMAIN_NAME" --title="$WP_TITLE" --admin_user="$WP_ADMIN" --admin_password="$WP_PASSWD" --admin_email="$WP_ADMIN_EMAIL" --allow-root
-# #create a new user with the given username, email, password and role
-# wp user create "$WP_USER" "$WP_USER_EMAIL" --user_pass="$WP_PASSWD" --role="$WP_U_ROLE" --allow-root
 
-
-
-# mv wp-config-sample.php wp-config.php
-# sed -i "s/database_name_here/$MARIA_DB_NAME/1" wp-config.php
-# sed -i "s/username_here/$MARIA_DB_NAME/1" wp-config.php
-# sed -i "s/password_here/$MARIA_RT_PASSWD/1" wp-config.php
-# sed -i "s/localhost/mariadb/1" wp-config.php
-
-
-
-# # wp core download
-
-# wp core install --url=$DOMAIN_NAME --title=$WP_USER --admin_user=$WP_USER --admin_password=$WP_PASSWD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
-
-# wp user create $WP_USER $WP_USER_EMAIL --role=author --user_pass=$WP_PASSWD --allow-root
-
-
-
-
-#---------------------------------------------------php config---------------------------------------------------#
-
-# # change listen port from unix socket to 9000
-# sed -i '36 s@/run/php/php7.4-fpm.sock@9000@' /etc/php/7.4/fpm/pool.d/www.conf
-# # create a directory for php-fpm
-# mkdir -p /run/php
-# # start php-fpm service in the foreground to keep the container running
-# /usr/sbin/php-fpm7.4 -F

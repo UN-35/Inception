@@ -1,10 +1,8 @@
-# version : '3'
 
-# the services part
+
 services:
 #mariadb
   mariadb:
-    # image: mariadb:user
     container_name: mariadb
     build: ./requirements/mariadb
     expose:
@@ -18,18 +16,17 @@ services:
     restart: always
 #nginx
   nginx:
-    # image: nginx:user
     container_name: nginx
     build: ./requirements/nginx
     ports:
       - "443:443"
     depends_on:
       - wordpress
-    healthcheck:
-      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
-      start_period: 10s
-      timeout: 5s
-      retries: 3
+    # healthcheck:
+    #   # test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"] /////not sure yet
+    #   start_period: 10s
+    #   timeout: 5s
+    #   retries: 3
     volumes:
       - wordpress:/var/www/html/wordpress
     networks:
@@ -37,7 +34,6 @@ services:
     restart: always
 #wordpress
   wordpress:
-    # image: wordpress:user
     container_name: wordpress
     build: ./requirements/wordpress
     depends_on:

@@ -17,9 +17,6 @@ COPY ./wp-config.php /var/www/html/
 
 RUN chmod +x /usr/local/bin/script.sh
 
-
-# change the permission of the script to make it executable
-
 ENTRYPOINT [ "/usr/local/bin/script.sh" ]
-# Update the CMD with the correct path
+
 CMD ["php-fpm7.4", "-F"]
