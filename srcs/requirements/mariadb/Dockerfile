@@ -13,5 +13,6 @@ RUN chmod +x /usr/local/bin/script.sh
 # Expose the default MariaDB port
 
 ENTRYPOINT [ "/usr/local/bin/script.sh" ]
-# Start MariaDB when the container starts
+
 CMD ["mysqld_safe"]
+
